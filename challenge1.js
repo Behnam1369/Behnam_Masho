@@ -1,14 +1,20 @@
-//https://www.hackerrank.com/challenges/find-digits
+//https://www.hackerrank.com/challenges/breaking-best-and-worst-records
 
-function findDigits(n) {
-  var count = 0;
-  var digits = n.toString().split("");
-  digits.map(function (el) {
-    if (n % parseInt(el) == 0) {
-      count++;
+function breakingRecords(scores) {
+  var min = scores[0];
+  var max = scores[0];
+  var maxbreak = 0;
+  var minbreak = 0;
+  scores.map(function (el) {
+    if (el > max) {
+      max = el;
+      maxbreak++;
+    } else if (el < min) {
+      min = el;
+      minbreak++;
     }
   });
-  console.log(count);
+  return [maxbreak, minbreak];
 }
 
-findDigits(1024);
+breakingRecords([3, 4, 21, 36, 10, 28, 35, 5, 24, 42]);
